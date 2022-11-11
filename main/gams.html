@@ -1,0 +1,102 @@
+<!DOCTYPE HTML> <!--TODO REMOVE CONSOLE LOGS-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="An educational website full of school topics and academic resources. The perfect place for students to learn.">
+  <meta name="keywords" content="math, science, ela, social studies, school, study">
+  <meta name="viewport" content="width=device-width">
+  <title>Utopia U‍‍n‍‍b‍‍‍Io‍‍ck‍‍‍e‍r - Ga‍‍ms</title>
+  <script async src="https://arc.io/widget.min.js#r3Hj6Ygj"></script>
+  <script src="https://kit.fontawesome.com/983251336b.js" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.ico">
+  <link href="/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="/css/nav.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <script src="/js/all.js"></script>
+</head>
+  <body>
+    <script>
+      document.body.style.backgroundImage = "none";
+      document.body.style.backgroundColor = "white";
+      document.body.style.height = "100vh";
+    </script>
+
+    <navbar class="navbar" style="display:none;">
+      <div class="title"><a href="/">
+        <img src="/img/logo.png">topia U‍‍n‍‍b‍‍‍Io‍‍ck‍‍‍e‍r
+      </a></div>
+      <div class="pages">
+        <ul>
+          <li><span class="navBtn" onclick="goFullscreen()"><i class="fa-solid fa-expand"></i> ‍ Fullscreen Mode</span></li>
+          <li><a href="/t.html" class="terms" id="pageHover" target="_blank">ToS</a></li>
+          <li><a href="/p.html" class="terms" id="pageHover" target="_blank">Privacy Policy</a></li>
+          <li><a href="/g/" id="pageHover">Games</a></li>
+          <li><a href="/g.html" id="pageHover">Google</a></li>
+          <li><a href="/y.html" id="pageHover">Y‍ou‍t‍u‍be</a></li>
+          <li><a href="/r.html" id="pageHover">R‍e‍‍d‍d‍‍i‍t</a></li>
+        </ul>
+        <span class="hamburger">
+          <span class="material-icons" id="menuBtn">menu</span>
+        </span>
+      </div>
+    </navbar>
+    <script src="/js/ub/nav.js"></script>
+    <script>
+      if(window.location.pathname == "/g/" || window.location.pathname == "/g"){
+        document.querySelector("navbar").style.display = "none";
+      }
+    </script>
+    
+    <iframe class="gam" src="/main.html" width="100%" height="100%" style="user-select:none;display:block;" onload="pageLoad()" frameborder="0">An error occured.</iframe>
+    <script>
+      var gam = document.querySelector(".gam");
+      gam.src = '/gams/' + window.location.pathname.substring(3);
+      
+      function pageLoad(){
+        var gamFrameTitle = gam.contentWindow.document.documentElement.querySelector(".center .title");
+        if(gam.contentWindow.location.pathname != "/gams/" && gam.contentWindow.location.pathname.startsWith("/gams/") && (!gamFrameTitle || gamFrameTitle.innerText != "Page Not Found")){
+          document.querySelector("navbar").style.display = "flex";
+          gam.style.height = "calc(100% - 58px)";
+          document.body.style.overflow = "hidden";
+        } else {
+          document.querySelector("navbar").style.display = "none";
+          gam.style.height = "100%";
+          document.body.style.overflow = "none";
+        }
+      }
+
+      function goFullscreen(){
+        //prerequesites
+        var gamFrameTitle = gam.contentWindow.document.documentElement.querySelector(".center .title");
+        if(gam.contentWindow.location.pathname != "/gams/" && gam.contentWindow.location.pathname.startsWith("/gams/") && (!gamFrameTitle || gamFrameTitle.innerText != "Page Not Found")){
+          //Fullscreen
+          document.querySelector("navbar").style.display = "none";
+          gam.style.height = "100%";
+          document.documentElement.requestFullscreen();
+          document.body.style.overflow = "none";
+        }
+      }
+
+      document.addEventListener("fullscreenchange", function() {
+        //prerequesites
+        var gamFrameTitle = gam.contentWindow.document.documentElement.querySelector(".center .title");
+        if(gam.contentWindow.location.pathname != "/gams/" && gam.contentWindow.location.pathname.startsWith("/gams/") && (!gamFrameTitle || gamFrameTitle.innerText != "Page Not Found")){
+          if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement && !document.fullscreen){
+            //Exiting fullscreen
+            document.querySelector("navbar").style.display = "flex";
+          gam.style.height = "calc(100% - 58px)";
+          document.body.style.overflow = "hidden";
+          }
+        }
+      });
+
+      
+    </script>
+  </body>
+</html>
